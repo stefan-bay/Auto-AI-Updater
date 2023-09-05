@@ -1,1 +1,1 @@
-# Auto-AI-Updataer
+# Auto-AI-Updater
