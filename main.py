@@ -1,14 +1,19 @@
 #!/usr/bin/env python
 
+import sys
+import os
 import time
 import random
-import os
+
+if len(sys.argv) != 2:
+  sys.stderr.write(f'usage: {sys.argv[0]} [absolute file path]\n')
+  sys.exit(1)
 
 number_of_commits = random.randrange(1, 10)
 print(f'Creating {number_of_commits} new commits')
 
 # create files directory
-files_path = os.path.join('.', 'files')
+files_path = sys.argv[1]
 if not os.path.exists(files_path):
   os.makedirs(files_path)
 
