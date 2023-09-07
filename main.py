@@ -4,6 +4,7 @@ import sys
 import os
 import time
 import random
+import git
 
 if len(sys.argv) != 2:
   sys.stderr.write(f'usage: {sys.argv[0]} [absolute file path]\n')
@@ -17,6 +18,8 @@ files_path = sys.argv[1]
 if not os.path.exists(files_path):
   os.makedirs(files_path)
 
+repo = git.Repo('./')
+
 for i in range(0, number_of_commits):
   # make some change to a file
   epoch_time = str(int(time.time()))
@@ -26,5 +29,8 @@ for i in range(0, number_of_commits):
     new_file.write(f'This file was created on {epoch_time}\n')
 
   # commit the change with message
+  commit_message = f'Added {file_name}'
+  repo.git.add(f)
+  repo.git.commit(m=commit_message)
 
 # push the commits to github
