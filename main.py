@@ -10,7 +10,7 @@ if len(sys.argv) != 2:
   sys.stderr.write(f'usage: {sys.argv[0]} [absolute file path]\n')
   sys.exit(1)
 
-number_of_commits = random.randrange(1, 10)
+number_of_commits = random.randrange(1, 5)
 print(f'Creating {number_of_commits} new commits')
 
 # create files directory
