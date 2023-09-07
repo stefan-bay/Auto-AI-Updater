@@ -19,6 +19,8 @@ if not os.path.exists(files_path):
   os.makedirs(files_path)
 
 repo = git.Repo('./')
+repo.git.checkout('main')
+repo.git.pull()
 
 for i in range(0, number_of_commits):
   # make some change to a file
@@ -34,3 +36,4 @@ for i in range(0, number_of_commits):
   repo.git.commit(m=commit_message)
 
 # push the commits to github
+repo.git.push()
