@@ -19,6 +19,9 @@ if not os.path.exists(files_path):
   os.makedirs(files_path)
 
 repo = git.Repo('./')
+repo.git.stash()
+initial_branch = repo.active_branch.name
+
 repo.git.checkout('main')
 repo.git.pull()
 
@@ -37,3 +40,6 @@ for i in range(0, number_of_commits):
 
 # push the commits to github
 repo.git.push()
+
+repo.git.checkout(initial_branch)
+repo.git.stash('pop')
