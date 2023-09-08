@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/local/bin/python3
 
 import sys
 import os
@@ -16,7 +16,9 @@ if not os.path.exists(files_path):
   print(f'Creating files path: {files_path}')
   os.makedirs(files_path)
 
-repo = git.Repo(os.getcwd())
+# get base repo by going up a directory from the selected files path
+repo_path = os.path.normpath(os.path.join(files_path, '..'))
+repo = git.Repo(repo_path)
 
 # save changes
 initial_branch = repo.active_branch.name
