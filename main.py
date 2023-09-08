@@ -54,4 +54,8 @@ repo.git.push()
 # restore changes
 print(f'Restoring changes to {initial_branch}')
 repo.git.checkout(initial_branch)
-repo.git.stash('pop')
+
+try:
+  stash_result = repo.git.stash('pop')
+except:
+  print('No stash to pop')
